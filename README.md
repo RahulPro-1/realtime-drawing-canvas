@@ -167,12 +167,3 @@ The server will start on **http://localhost:3000**
 
 **Rahul Kumar**  
 B.Tech CSE | MANIT Bhopal  
-📧 [Your Email Here]  
-💻 Passionate about Web Development, AI & Real-Time Systems  
-
----
-
-## 🧾 License
-
-This project is licensed under the **MIT License**.  
-Feel free to fork and improve it — contributions are welcome!
