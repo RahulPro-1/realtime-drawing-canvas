@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Realtime-Canvas 🎨</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>Realtime-Canvas 🎨</header>
+
+  <!-- Join Screen -->
+  <div id="join-screen" class="screen active">
+    <div class="join-container">
+      <h1>Welcome to Realtime-Canvas</h1>
+      <p class="subtitle">Join a shared room and start drawing together!</p>
+
+      <form id="join-form">
+        <div class="input-group">
+          <label for="room-name">Room Name</label>
+          <input type="text" id="room-name" placeholder="Enter room name" required />
+        </div>
+
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter your name" required />
+        </div>
+
+        <button type="submit" class="btn-primary">Join Room</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Canvas Screen -->
+  <div id="canvas-screen" class="screen">
+    <div class="toolbar">
+      <div class="toolbar-section room-info">
+        <span class="room-label">Room:</span>
+        <span id="current-room" class="room-name"></span>
+      </div>
+
+      <div class="toolbar-section tools">
+        <button id="brush-tool" class="tool-btn active" title="Brush">🖌️</button>
+        <button id="eraser-tool" class="tool-btn" title="Eraser">🧽</button>
+        <div class="divider"></div>
+
+        <!-- 🎨 Color Swatches -->
+        <div class="color-palette">
+          <div class="color-swatch" data-color="#2E7D32" style="background:#2E7D32"></div>
+          <div class="color-swatch" data-color="#8BC34A" style="background:#8BC34A"></div>
+          <div class="color-swatch" data-color="#C8E6C9" style="background:#C8E6C9"></div>
+          <div class="color-swatch" data-color="#A1887F" style="background:#A1887F"></div>
+          <div class="color-swatch" data-color="#6D4C41" style="background:#6D4C41"></div>
+          <div class="color-swatch" data-color="#000000" style="background:#000000"></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="slider-wrapper">
+          <label>Width:</label>
+          <input type="range" id="stroke-width" min="1" max="30" value="4" />
+          <span id="stroke-width-value">4</span>
+        </div>
+      </div>
+
+      <div class="toolbar-section actions">
+        <button id="undo-btn" class="action-btn" title="Undo">↩️</button>
+        <button id="redo-btn" class="action-btn" title="Redo">↪️</button>
+        <button id="clear-btn" class="action-btn" title="Clear">🧹</button>
+        <button id="leave-btn" class="action-btn leave" title="Leave Room">🚪</button>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <aside class="sidebar">
+        <h3>Connected Users</h3>
+        <div id="users-list" class="users-list"></div>
+      </aside>
+
+      <div class="canvas-container">
+        <canvas id="drawing-canvas" width="1200" height="700"></canvas>
+        <div id="cursors-container"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Fix: Load Socket.IO client BEFORE your JS -->
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+  <!-- Your main module -->
+  <script type="module" src="main.js"></script>
+</body>
+</html>
